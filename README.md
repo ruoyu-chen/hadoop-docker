@@ -22,9 +22,10 @@
 
 1. 镜像依赖关系图
 
-![](){镜像依赖关系图}{https://github.com/ruoyu-chen/hadoop-docker/raw/master/arch.png “镜像依赖关系图”}
 
-	图中，灰色的镜像（centos:6）为docker hub官方基础镜像。其它镜像（twinsen/hadoop:2.7.2等）都是在下层镜像的基础上实现的。
+![镜像依赖关系图](https://github.com/ruoyu-chen/hadoop-docker/raw/master/arch.jpg “镜像依赖关系图”)
+	
+    上图中，灰色的镜像（centos:6）为docker hub官方基础镜像。其它镜像（twinsen/hadoop:2.7.2等）都是在下层镜像的基础上实现的。
     这一镜像之间的依赖关系，决定了镜像的编译顺序
 
 2. 构建镜像：
