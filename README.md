@@ -152,6 +152,19 @@ docker-compose -f docker-compose-hbase.yml exec hbase-master stop-dfs.sh
 docker-compose -f docker-compose-hbase.yml stop
 </code></pre>
 
+####4. 开发与测试过程中的集群使用方法
+
+目前集群中基本采用了一master三slave的节点分配方案，可以通过调整docker-compose配置文件以及相应软件的配置文件来实现集群扩容，暂时无法做到自动化扩容。
+
+编写程序可以使用任意的IDE和操作系统，程序编写完成后，打包为jar文件，然后放在./volume/code/目录下。任何一个集群环境下，都在集群启动时将code目录挂载在master节点的/code路径下。
+
+以Hadoop为例，如果要执行wordcount程序（在volume/code/tests/mapreduce-test目录下已经包含了）。在启动集群并启动各服务进程后。执行下列语句，可以进入master节点的命令行环境：
+
+<pre><code>docker-compose -f docker-compose-hadoop.yml exec hadoop-master /bin/bash
+</code></pre>
+
+然后可以进入/code目录提交任务，完成计算。如下图所示：
+![命令行环境下提交任务](https://github.com/ruoyu-chen/hadoop-docker/raw/master/submitJob.png)
 ##3.已知问题
 
 待完善
