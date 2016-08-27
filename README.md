@@ -154,7 +154,7 @@ docker-compose -f docker-compose-hbase.yml stop
 
 ####4. 开发与测试过程中的集群使用方法
 
-目前集群中基本采用了一master三slave的节点分配方案，可以通过调整docker-compose配置文件以及相应软件的配置文件来实现集群扩容，暂时无法做到自动化扩容。
+目前集群中采用的是1个master节点和3个slave节点的分配方案，可以通过调整docker-compose配置文件以及相应软件的配置文件来实现集群扩容，暂时无法做到自动化扩容。
 
 编写程序可以使用任意的IDE和操作系统，程序编写完成后，打包为jar文件，然后放在./volume/code/目录下。任何一个集群环境下，都在集群启动时将code目录挂载在master节点的/code路径下。
 
