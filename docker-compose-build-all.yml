@@ -1,0 +1,25 @@
+version: '2'
+services:
+  os-jvm:
+    build: ./os-jvm-docker/centos6-openjdk8
+    image: twinsen/os-jvm:centos6-openjdk8
+
+  hadoop:
+    build: ./hadoop-docker/2.7.2
+    image: twinsen/hadoop:2.7.2
+
+  hive:
+    build: ./hive-docker/1.1.1
+    image: twinsen/hive:1.1.1
+
+  spark:
+    build: ./spark-docker/1.6.2
+    image: twinsen/spark:1.6.2
+
+  zookeeper:
+    build: ./zk-docker
+    image: twinsen/zookeeper:3.4.8
+    
+  hbase:
+    build: ./hbase-docker
+    image: twinsen/hbase:1.2.2

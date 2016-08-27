@@ -1,0 +1,129 @@
+version: '2'
+services:
+  hbase-slave1:
+    image: twinsen/hbase:1.2.2
+    container_name: hbase-slave1
+    volumes:
+      - "./volume/hadoop/work/slave1:/works"
+      - "./volume/hadoop/logs/slave1:/root/hadoop/logs/"
+      - "./volume/spark/logs/slave1:/root/spark/logs/"
+      - "./volume/hbase/slave1:/hworks/"
+      - "./volume/hbase/logs/slave1:/root/hbase/logs/"
+    hostname: hbase-slave1.hadoop-docker
+    networks:
+      hadoop-docker:
+        aliases: 
+          - hbase-slave1
+    tty: true
+  
+  hbase-slave2:
+    image: twinsen/hbase:1.2.2
+    container_name: hbase-slave2
+    volumes:
+      - "./volume/hadoop/work/slave2:/works"
+      - "./volume/hadoop/logs/slave2:/root/hadoop/logs/"
+      - "./volume/spark/logs/slave2:/root/spark/logs/"
+      - "./volume/hbase/slave2:/hworks/"
+      - "./volume/hbase/logs/slave2:/root/hbase/logs/"
+    hostname: hbase-slave2.hadoop-docker
+    networks:
+      hadoop-docker:
+        aliases: 
+          - hbase-slave2
+    tty: true
+
+  hbase-slave3:
+    image: twinsen/hbase:1.2.2
+    container_name: hbase-slave3
+    volumes:
+      - "./volume/hadoop/work/slave3:/works"
+      - "./volume/hadoop/logs/slave3:/root/hadoop/logs/"
+      - "./volume/spark/logs/slave3:/root/spark/logs/"
+      - "./volume/hbase/slave3:/hworks/"
+      - "./volume/hbase/logs/slave3:/root/hbase/logs/"
+    hostname: hbase-slave3.hadoop-docker
+    networks:
+      hadoop-docker:
+        aliases: 
+          - hbase-slave3
+    tty: true
+
+
+  hbase-master:
+    image: twinsen/hbase:1.2.2
+    container_name: hbase-master
+    ports:
+      - "50070:50070"
+      - "8088:8088"
+      - "8080:8080"
+      - "8042:8042"
+      - "16010:16010"
+    volumes:
+      - "./volume/hadoop/work/master:/works"
+      - "./volume/hadoop/logs/master:/root/hadoop/logs/"
+      - "./volume/spark/logs/master:/root/spark/logs/"
+      - "./volume/hbase/master:/hworks/"
+      - "./volume/hbase/logs/master:/root/hbase/logs/"
+      - "./volume/code:/code"
+      - "./scripts:/root/scripts:ro"
+    hostname: hbase-master.hadoop-docker
+    networks:
+      hadoop-docker:
+        aliases: 
+          - hbase-master
+    tty: true
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - "./volume/mysql:/var/lib/mysql"
+    container_name: mysql
+    hostname: mysql
+    networks:
+      - hadoop-docker
+    environment:
+      - MYSQL_ROOT_PASSWORD=hadoop
+    tty: true
+  
+  zoo1:
+    build: ./zk-docker
+    image: twinsen/zookeeper:3.4.8
+    volumes:
+      - "./volume/zk/zoo1:/works"
+    container_name: zoo1
+    hostname: zoo1
+    networks:
+      hadoop-docker:
+        aliases: 
+          - zoo1
+    tty: true
+
+  zoo2:
+    build: ./zk-docker
+    image: twinsen/zookeeper:3.4.8
+    volumes:
+      - "./volume/zk/zoo2:/works"
+    container_name: zoo2
+    hostname: zoo2
+    networks:
+      hadoop-docker:
+        aliases: 
+          - zoo2
+    tty: true
+    
+  zoo3:
+    build: ./zk-docker
+    image: twinsen/zookeeper:3.4.8
+    volumes:
+      - "./volume/zk/zoo3:/works"
+    container_name: zoo3
+    hostname: zoo3
+    networks:
+      hadoop-docker:
+        aliases: 
+          - zoo3
+    tty: true
+
+networks:
+  hadoop-docker:
+    external: true

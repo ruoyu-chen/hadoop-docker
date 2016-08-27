@@ -1,0 +1,4 @@
+hbase-master.docker_hbase
+hbase-slave1.docker_hbase
+hbase-slave2.docker_hbase
+hbase-slave3.docker_hbase

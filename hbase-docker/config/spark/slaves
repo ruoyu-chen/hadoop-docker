@@ -1,0 +1,4 @@
+# A Spark Worker will be started on each of the machines listed below.
+hbase-slave1.hadoop-docker
+hbase-slave2.hadoop-docker
+hbase-slave3.hadoop-docker
