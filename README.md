@@ -40,11 +40,11 @@
     
 `docker-compose -f docker-compose-build-all.yml build os-jvm`
 
-- 构建Hadoop环境，包含Hadoop 2.7.2，并已启用SSHD服务 
+- 构建Hadoop环境，包含Hadoop 2.7.2
 
 `docker-compose -f docker-compose-build-all.yml build hadoop`
 
-- 构建Hive环境，包含Hive 2.1.1，同时依赖于MySQL 5.7
+- 构建Hive环境，包含Hive 2.1.1
 
 `docker-compose -f docker-compose-build-all.yml build hive`
 
@@ -52,10 +52,9 @@
 
 `docker-compose -f docker-compose-build-all.yml build spark`
 
-- 构建HBase环境，包含HBase 1.2.2
+- 拉取MySQL 5.7 官方镜像
 
-`docker-compose -f docker-compose-build-all.yml build hbase`
-
+`docker pull mysql:5.7`
 
 ###3. 启动及停止集群
 完成上一步的镜像编译工作后，在系统命令行中，可以使用docker images命令查看目前docker环境下的镜像，如下图所示：
