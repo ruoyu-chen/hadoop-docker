@@ -23,14 +23,14 @@
 
 ###2. 镜像依赖关系
 
-![镜像依赖关系图](https://github.com/ruoyu-chen/hadoop-docker/raw/master/arch.jpg "镜像依赖关系")
+![镜像依赖关系图](https://github.com/ruoyu-chen/hadoop-docker/raw/master/images/arch.jpeg "镜像依赖关系")
 上图中，灰色的镜像（centos:6）为docker hub官方基础镜像。其它镜像（twinsen/hadoop:2.7.2等）都是在下层镜像的基础上实现的。这一镜像之间的依赖关系，决定了镜像的编译顺序.
 
 ## 2.使用方法简介
 
 ###1. 安装docker
 具体安装方法请自行百度，安装完成后，在命令行下输入docker info进行测试，输出结果如下图所示，说明安装成功
-![docker安装测试结果]()
+![docker安装测试结果](https://github.com/ruoyu-chen/hadoop-docker/raw/master/images/docker_info.png "Docker安装测试")
 
 ###2. 构建镜像
 首先，下载工程文件（），解压到任意目录下。
@@ -105,7 +105,7 @@ docker-compose down</code></pre>
 </code></pre>
 
 然后可以进入/code目录提交任务，完成计算。如下图所示：
-![命令行环境下提交任务](https://github.com/ruoyu-chen/hadoop-docker/raw/master/submitJob.png)
+![命令行环境下提交任务](https://github.com/ruoyu-chen/hadoop-docker/raw/master/images/submitJob.png)
 ##3.已知问题
 
 待完善
