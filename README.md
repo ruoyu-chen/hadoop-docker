@@ -33,7 +33,7 @@
 ![docker安装测试结果](https://github.com/ruoyu-chen/hadoop-docker/raw/master/images/docker_info.png "Docker安装测试")
 
 ###2. 构建镜像
-首先，下载工程文件（），解压到任意目录下。
+首先，下载工程文件（https://github.com/ruoyu-chen/hadoop-docker/releases/download/1.1/services.zip），解压到任意目录下。
 接下来，可以在工程根目录下（包含有docker-compose-build-all.yml文件），在系统命令行中，依次使用下列命令构建镜像：
 	
 - 构建基本操作系统和OpenJDK环境，包含CentOS 6和OpenJDK 8
@@ -58,8 +58,9 @@
 
 ###3. 启动及停止集群
 完成上一步的镜像编译工作后，在系统命令行中，可以使用docker images命令查看目前docker环境下的镜像，如下图所示：
+![查看docker本机镜像列表](https://github.com/ruoyu-chen/hadoop-docker/raw/master/images/docker_images.png "查看Docker本机镜像列表")
+为了方便使用，在工程根目录下放置了一个docker-compose.yml文件，这一文件中已经预先配置好了由3个slave节点和1个master节点组成的Spark集群。
 
-为了方便使用，在工程根目录下放置了一个docker-compose.yml文件，这一文件中已经预先配置好了由3个slave节点和1个master节点组成的Spark集群（基于twinsen/Spark:2.1.0镜像)
 下面简要介绍启动和关闭Spark集群的步骤（以下步骤均在命令行环境下完成，在工程根目录下执行）
 
 - 初始化工作
