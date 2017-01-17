@@ -33,7 +33,7 @@
 ![docker安装测试结果](https://github.com/ruoyu-chen/hadoop-docker/raw/master/images/docker_info.png "Docker安装测试")
 
 ###2. 构建镜像
-首先，下载工程文件（https://github.com/ruoyu-chen/hadoop-docker/releases/download/1.1/services.zip），解压到任意目录下。
+首先，下载工程文件（ https://github.com/ruoyu-chen/hadoop-docker/releases/download/1.1/services.zip ），解压到任意目录下。
 接下来，可以在工程根目录下（包含有docker-compose-build-all.yml文件），在系统命令行中，依次使用下列命令构建镜像：
 	
 - 构建基本操作系统和OpenJDK环境，包含CentOS 6和OpenJDK 8
