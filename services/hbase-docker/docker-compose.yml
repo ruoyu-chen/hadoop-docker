@@ -65,7 +65,6 @@ services:
       - "./volume/hbase/master:/hworks/"
       - "./volume/hbase/logs/master:/root/hbase/logs/"
       - "./volume/code:/code"
-      - "./scripts:/root/scripts:ro"
     hostname: hbase-master.hadoop-docker
     networks:
       hadoop-docker:
@@ -86,7 +85,6 @@ services:
     tty: true
   
   zoo1:
-    build: ./zk-docker
     image: twinsen/zookeeper:3.4.8
     volumes:
       - "./volume/zk/zoo1:/works"
@@ -99,7 +97,6 @@ services:
     tty: true
 
   zoo2:
-    build: ./zk-docker
     image: twinsen/zookeeper:3.4.8
     volumes:
       - "./volume/zk/zoo2:/works"
@@ -112,7 +109,6 @@ services:
     tty: true
     
   zoo3:
-    build: ./zk-docker
     image: twinsen/zookeeper:3.4.8
     volumes:
       - "./volume/zk/zoo3:/works"

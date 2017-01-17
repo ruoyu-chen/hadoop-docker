@@ -8,18 +8,10 @@ services:
     build: ./hadoop-docker/2.7.2
     image: twinsen/hadoop:2.7.2
 
-  hive:
-    build: ./hive-docker/1.1.1
-    image: twinsen/hive:1.1.1
+  hive-2.1.1:
+    build: ./hive-docker/2.1.1
+    image: twinsen/hive:2.1.1
 
-  spark:
-    build: ./spark-docker/1.6.2
-    image: twinsen/spark:1.6.2
-
-  zookeeper:
-    build: ./zk-docker
-    image: twinsen/zookeeper:3.4.8
-    
-  hbase:
-    build: ./hbase-docker
-    image: twinsen/hbase:1.2.2
+  spark-2.1.0:
+    build: ./spark-docker/2.1.0
+    image: twinsen/spark:2.1.0

@@ -21,7 +21,7 @@ RUN chmod 600 /root/.ssh/config && \
     chown root:root /root/.ssh/config
 
 #安装Protocol Buffer, Hadoop
-RUN wget https://github.com/ruoyu-chen/hadoop-docker/raw/master/hadoop-2.7.2.tar.gz && \
+RUN wget https://github.com/ruoyu-chen/hadoop-docker/raw/master/dist/hadoop-2.7.2.tar.gz && \
 	tar -xzvf hadoop-2.7.2.tar.gz -C /root/ && \
     mv /root/hadoop-2.7.2 $HADOOP_HOME && \
     rm -rf hadoop-2.7.2.tar.gz && \
@@ -31,7 +31,7 @@ RUN wget https://github.com/ruoyu-chen/hadoop-docker/raw/master/hadoop-2.7.2.tar
     rm -rf $HADOOP_CONF_DIR/*.cmd && \
     rm -rf $HADOOP_CONF_DIR/*.template && \
     rm -rf $HADOOP_CONF_DIR/*.example && \
-    wget https://github.com/ruoyu-chen/hadoop-docker/raw/master/protobuf.tar.gz && \
+    wget https://github.com/ruoyu-chen/hadoop-docker/raw/master/dist/protobuf.tar.gz && \
 	tar -xzvf protobuf.tar.gz -C /root/ && \
 	rm -rf protobuf.tar.gz	
 

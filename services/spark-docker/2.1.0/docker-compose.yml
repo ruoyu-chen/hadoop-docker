@@ -1,0 +1,87 @@
+version: '2'
+services:
+  spark-slave1:
+    image: twinsen/spark:2.1.0
+    container_name: spark-slave1
+    volumes:
+      - "./volume/hadoop/work/slave1:/works"
+      - "./volume/hadoop/logs/slave1:/root/hadoop/logs/"
+      - "./volume/spark/logs/slave1:/root/spark/logs/"
+      - "./volume/ro_data:/ro_data:ro"
+    hostname: hadoop-slave1
+    networks:
+      spark:
+        aliases: 
+          - hadoop-slave1
+    tty: true
+  
+  spark-slave2:
+    image: twinsen/spark:2.1.0
+    container_name: spark-slave2
+    volumes:
+      - "./volume/hadoop/work/slave2:/works"
+      - "./volume/hadoop/logs/slave2:/root/hadoop/logs/"
+      - "./volume/spark/logs/slave2:/root/spark/logs/"
+      - "./volume/ro_data:/ro_data:ro"
+    hostname: hadoop-slave2
+    networks:
+      spark:
+        aliases: 
+          - hadoop-slave2
+    tty: true
+
+  spark-slave3:
+    image: twinsen/spark:2.1.0
+    container_name: spark-slave3
+    volumes:
+      - "./volume/hadoop/work/slave3:/works"
+      - "./volume/hadoop/logs/slave3:/root/hadoop/logs/"
+      - "./volume/spark/logs/slave3:/root/spark/logs/"
+      - "./volume/ro_data:/ro_data:ro"
+    hostname: hadoop-slave3
+    networks:
+      spark:
+        aliases: 
+          - hadoop-slave3
+    tty: true
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - "./volume/mysql:/var/lib/mysql"
+    container_name: mysql
+    hostname: mysql
+    networks:
+      - spark
+    environment:
+      - MYSQL_ROOT_PASSWORD=hadoop
+    tty: true
+
+  spark-master:
+    image: twinsen/spark:2.1.0
+    ports:
+      - "50070:50070"
+      - "8088:8088"
+      - "8080:8080"
+      - "8042:8042"
+    volumes:
+      - "./volume/hadoop/work/master:/works"
+      - "./volume/hadoop/logs/master:/root/hadoop/logs/"
+      - "./volume/spark/logs/master:/root/spark/logs/"
+      - "./volume/code:/code"
+      - "./volume/ro_data:/ro_data:ro"
+    container_name: spark-master
+    hostname: hadoop-master
+    links:
+      - spark-slave1
+      - spark-slave2
+      - spark-slave3
+      - mysql
+    networks:
+      spark:
+        aliases: 
+          - hadoop-master
+    tty: true
+
+networks:
+  spark:

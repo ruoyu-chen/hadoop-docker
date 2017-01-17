@@ -63,15 +63,20 @@
 为了方便使用，在工程根目录下放置了一个docker-compose.yml文件，这一文件中已经预先配置好了由3个slave节点和1个master节点组成的Spark集群（基于twinsen/Spark:2.1.0镜像)
 下面简要介绍启动和关闭Spark集群的步骤（以下步骤均在命令行环境下完成，在工程根目录下执行）
 
-- 创建容器
+- 初始化工作
 
-<pre><code>docker-compose up -d</code></pre>
+<pre><code>
+#[创建容器]
+docker-compose up -d
+#[格式化HDFS。第一次启动集群前，需要先格式化HDFS；以后每次启动集群时，都不需要再次格式化HDFS]
+docker-compose exec spark-master hdfs namenode -format
+#[初始化Hive数据库。仅在第一次启动集群前执行一次]
+docker-compose exec spark-master schematool -dbType mysql -initSchema
+</code></pre>
 
 - 启动集群进程，依次执行：
 
-<pre><code>s
-#[第一次启动集群前，需要先格式化HDFS；以后每次启动集群时，都不需要再次格式化HDFS]
-docker-compose exec spark-master hdfs namenode -format
+<pre><code>
 #[启动HDFS]
 docker-compose exec spark-master start-dfs.sh
 #[启动YARN]

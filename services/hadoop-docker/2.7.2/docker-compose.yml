@@ -1,7 +1,6 @@
 version: '2'
 services:
   hadoop-slave1:
-    build: ./hadoop-docker/2.7.2
     image: twinsen/hadoop:2.7.2
     container_name: hadoop-slave1
     volumes:
@@ -13,7 +12,6 @@ services:
     tty: true
   
   hadoop-slave2:
-    build: ./hadoop-docker/2.7.2
     image: twinsen/hadoop:2.7.2
     container_name: hadoop-slave2
     volumes:
@@ -25,7 +23,6 @@ services:
     tty: true
       
   hadoop-slave3:
-    build: ./hadoop-docker/2.7.2
     image: twinsen/hadoop:2.7.2
     container_name: hadoop-slave3
     volumes:
@@ -37,8 +34,8 @@ services:
     tty: true  
 
   hadoop-master:
-    build: ./hadoop-docker/2.7.2
     image: twinsen/hadoop:2.7.2
+    container_name: hadoop-master
     ports:
       - "50070:50070"
       - "8088:8088"
@@ -46,8 +43,6 @@ services:
       - "./volume/hadoop/work/master:/works"
       - "./volume/hadoop/logs/master:/root/hadoop/logs/"
       - "./volume/code:/code"
-      - "./scripts:/root/scripts:ro"
-    container_name: hadoop-master
     hostname: hadoop-master
     links:
       - hadoop-slave1
