@@ -36,6 +36,14 @@
 首先，下载工程文件（ https://github.com/ruoyu-chen/hadoop-docker/archive/1.1.zip ），解压到任意目录下。
 接下来，可以在工程根目录下（包含有docker-compose-build-all.yml文件），在系统命令行中，依次使用下列命令构建镜像：
 	
+- 拉取MySQL 5.7 官方镜像
+
+`docker pull mysql:5.7`
+
+- 拉取CentOS 6 官方镜像
+
+`docker pull centos:6`
+
 - 构建基本操作系统和OpenJDK环境，包含CentOS 6和OpenJDK 8
     
 `docker-compose -f docker-compose-build-all.yml build os-jvm`
@@ -46,15 +54,11 @@
 
 - 构建Hive环境，包含Hive 2.1.1
 
-`docker-compose -f docker-compose-build-all.yml build hive`
+`docker-compose -f docker-compose-build-all.yml build hive-2.1.1`
 
 - 构建Spark环境，包含Spark 2.1.0
 
-`docker-compose -f docker-compose-build-all.yml build spark`
-
-- 拉取MySQL 5.7 官方镜像
-
-`docker pull mysql:5.7`
+`docker-compose -f docker-compose-build-all.yml build spark-2.1.0`
 
 ###3. 启动及停止集群
 完成上一步的镜像编译工作后，在系统命令行中，可以使用docker images命令查看目前docker环境下的镜像，如下图所示：
