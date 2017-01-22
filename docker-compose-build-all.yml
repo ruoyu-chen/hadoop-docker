@@ -1,17 +1,21 @@
 version: '2'
 services:
   os-jvm:
-    build: ./os-jvm-docker/centos6-openjdk8
+    build: ./services/os-jvm-docker/centos6-openjdk8
     image: twinsen/os-jvm:centos6-openjdk8
 
+  os7-jvm:
+    build: ./services/os-jvm-docker/centos7-openjdk8
+    image: twinsen/os-jvm:centos7-openjdk8
+
   hadoop:
-    build: ./hadoop-docker/2.7.2
+    build: ./services/hadoop-docker/2.7.2
     image: twinsen/hadoop:2.7.2
 
   hive-2.1.1:
-    build: ./hive-docker/2.1.1
+    build: ./services/hive-docker/2.1.1
     image: twinsen/hive:2.1.1
 
   spark-2.1.0:
-    build: ./spark-docker/2.1.0
+    build: ./services/spark-docker/2.1.0
     image: twinsen/spark:2.1.0
