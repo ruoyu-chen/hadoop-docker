@@ -44,21 +44,21 @@
 
 `docker pull centos:6`
 
-- 构建基本操作系统和OpenJDK环境，包含CentOS 6和OpenJDK 8
+- 拉取基本操作系统和OpenJDK环境，包含CentOS 6和OpenJDK 8
     
-`docker-compose -f docker-compose-build-all.yml build os-jvm`
+`docker pull twinsen/os-jvm:centos6-openjdk8`
 
-- 构建Hadoop环境，包含Hadoop 2.7.2
+- 拉取Hadoop环境，包含Hadoop 2.7.2
 
-`docker-compose -f docker-compose-build-all.yml build hadoop`
+`docker pull twinsen/hadoop:2.7.2`
 
-- 构建Hive环境，包含Hive 2.1.1
+- 拉取Hive环境，包含Hive 2.1.1
 
-`docker-compose -f docker-compose-build-all.yml build hive-2.1.1`
+`docker pull twinsen/hive:2.1.1`
 
-- 构建Spark环境，包含Spark 2.1.0
+- 拉取Spark环境，包含Spark 2.1.0
 
-`docker-compose -f docker-compose-build-all.yml build spark-2.1.0`
+`docker pull twinsen/spark:2.1.0`
 
 ###3. 启动及停止集群
 完成上一步的镜像编译工作后，在系统命令行中，可以使用docker images命令查看目前docker环境下的镜像，如下图所示：
