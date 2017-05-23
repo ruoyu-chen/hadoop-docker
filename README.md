@@ -78,6 +78,8 @@ docker-compose exec spark-master schematool -dbType mysql -initSchema
 docker-compose exec spark-master jar cv0f /code/spark-libs.jar -C /root/spark/jars/ .
 #[启动HDFS]
 docker-compose exec spark-master start-dfs.sh
+#[在HDFS中创建/user/spark/share/lib/目录]
+docker-compose exec spark-master hadoop fs -mkdir -p /user/spark/share/lib/
 #[将/code/spark-libs.jar文件上传至HDFS下的/user/spark/share/lib/目录下]
 docker-compose exec spark-master hadoop fs -put /code/spark-libs.jar /user/spark/share/lib/
 #[关闭HDFS]
