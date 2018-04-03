@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if [ "$HOSTNAME"x = "hadoop-master"x ]; then
+    echo "root:$ROOT_PASSWORD"|chpasswd
+    hdfs namenode -format && start-dfs.sh && start-yarn.sh && start-all.sh
+fi

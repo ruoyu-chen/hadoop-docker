@@ -22,4 +22,7 @@ RUN wget http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-without-hadoop.tgz
 #拷贝Spark配置文件
 COPY config/spark/* $SPARK_HOME/conf/
 
-CMD [ "sh", "-c", "service sshd start; bash"]
+#拷贝启动脚本
+ADD config/other/startup /bin/startup
+
+CMD [ "sh", "-c", "startup", "service sshd start; bash"]
