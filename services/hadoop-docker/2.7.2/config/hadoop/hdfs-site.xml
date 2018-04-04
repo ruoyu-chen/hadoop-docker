@@ -46,4 +46,19 @@
 <name>dfs.permission</name>
 <value>false</value>
 </property>
+
+<property>
+    <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
+    <value>false</value>
+</property>
+
+<property>
+    <name>dfs.client.use.datanode.hostname</name>
+    <value>false</value>
+</property>
+
+<property>
+    <name>dfs.datanode.use.datanode.hostname</name>
+    <value>false</value>
+</property>
 </configuration>

@@ -81,6 +81,8 @@ services:
       spark:
         aliases: 
           - hadoop-master
+    environment:
+      - ROOT_PASSWORD=hadoop
     tty: true
 
 networks:
