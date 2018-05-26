@@ -6,6 +6,7 @@ services:
     volumes:
       - "./volume/hadoop/work/slave1:/works"
       - "./volume/hadoop/logs/slave1:/root/hadoop/logs/"
+      - "./volume/hadoop/tmp/slave1:/tmp"
     hostname: hadoop-slave1
     networks:
       - hadoop
@@ -17,6 +18,7 @@ services:
     volumes:
       - "./volume/hadoop/work/slave2:/works"
       - "./volume/hadoop/logs/slave2:/root/hadoop/logs/"
+      - "./volume/hadoop/tmp/slave2:/tmp"
     hostname: hadoop-slave2
     networks:
       - hadoop
@@ -28,6 +30,7 @@ services:
     volumes:
       - "./volume/hadoop/work/slave3:/works"
       - "./volume/hadoop/logs/slave3:/root/hadoop/logs/"
+      - "./volume/hadoop/tmp/slave3:/tmp"
     hostname: hadoop-slave3
     networks:
       - hadoop
@@ -42,6 +45,7 @@ services:
     volumes:
       - "./volume/hadoop/work/master:/works"
       - "./volume/hadoop/logs/master:/root/hadoop/logs/"
+      - "./volume/hadoop/tmp/master:/tmp"
       - "./volume/code:/code"
     hostname: hadoop-master
     links:

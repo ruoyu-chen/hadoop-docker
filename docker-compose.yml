@@ -7,6 +7,7 @@ services:
       - "./volume/hadoop/work/slave1:/works"
       - "./volume/hadoop/logs/slave1:/root/hadoop/logs/"
       - "./volume/spark/logs/slave1:/root/spark/logs/"
+      - "./volume/hadoop/tmp/slave1:/tmp"
       - "./volume/ro_data:/ro_data:ro"
     hostname: hadoop-slave1
     networks:
@@ -22,6 +23,7 @@ services:
       - "./volume/hadoop/work/slave2:/works"
       - "./volume/hadoop/logs/slave2:/root/hadoop/logs/"
       - "./volume/spark/logs/slave2:/root/spark/logs/"
+      - "./volume/hadoop/tmp/slave2:/tmp"
       - "./volume/ro_data:/ro_data:ro"
     hostname: hadoop-slave2
     networks:
@@ -37,6 +39,7 @@ services:
       - "./volume/hadoop/work/slave3:/works"
       - "./volume/hadoop/logs/slave3:/root/hadoop/logs/"
       - "./volume/spark/logs/slave3:/root/spark/logs/"
+      - "./volume/hadoop/tmp/slave3:/tmp"
       - "./volume/ro_data:/ro_data:ro"
     hostname: hadoop-slave3
     networks:
@@ -68,6 +71,7 @@ services:
       - "./volume/hadoop/work/master:/works"
       - "./volume/hadoop/logs/master:/root/hadoop/logs/"
       - "./volume/spark/logs/master:/root/spark/logs/"
+      - "./volume/hadoop/tmp/master:/tmp"
       - "./volume/code:/code"
       - "./volume/ro_data:/ro_data:ro"
     container_name: spark-master
