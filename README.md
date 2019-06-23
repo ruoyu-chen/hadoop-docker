@@ -1,4 +1,4 @@
-#基于Docker的Hadoop开发测试环境使用说明
+# 基于Docker的Hadoop开发测试环境使用说明
 
 ## 0.内容
 1. 基本软件环境介绍
@@ -8,7 +8,7 @@
 
 ## 1.基本软件环境介绍
 
-###1.1 软件版本
+### 1.1 软件版本
 
 - 操作系统: CentOS 6
 - Java环境: OpenJDK 8
@@ -21,18 +21,18 @@
 - 所有软件的二进制包均通过网络下载。其中包含自行编译的Hadoop和Protobuf二进制包，保存在Github上，其它软件的二进制包均使用Apache官方镜像。
 
 
-###1.2 镜像依赖关系
+### 1.2 镜像依赖关系
 
 ![镜像依赖关系图](https://github.com/ruoyu-chen/hadoop-docker/raw/master/images/arch.jpeg "镜像依赖关系")
 上图中，灰色的镜像（centos:6）为docker hub官方基础镜像。其它镜像（twinsen/hadoop:2.7.2等）都是在下层镜像的基础上实现的。这一镜像之间的依赖关系，决定了镜像的编译顺序.
 
 ## 2.使用方法简介
 
-###2.1 安装docker
+### 2.1 安装docker
 具体安装方法请自行百度，安装完成后，在命令行下输入docker info进行测试，输出结果如下图所示，说明安装成功
 ![docker安装测试结果](https://github.com/ruoyu-chen/hadoop-docker/raw/master/images/docker_info.png "Docker安装测试")
 
-###2.2 构建镜像
+### 2.2 构建镜像
 首先，下载工程文件（ https://github.com/ruoyu-chen/hadoop-docker/archive/1.1.zip ），解压到任意目录下。
 接下来，可以在工程根目录下（包含有docker-compose-build-all.yml文件），在系统命令行中，依次使用下列命令构建镜像：
 	
@@ -60,14 +60,14 @@
 
 `docker pull twinsen/spark:2.1.0`
 
-###2.3 环境准备
+### 2.3 环境准备
 完成上一步的镜像编译工作后，在系统命令行中，可以使用docker images命令查看目前docker环境下的镜像，如下图所示：
 ![查看docker本机镜像列表](https://github.com/ruoyu-chen/hadoop-docker/raw/master/images/docker_images.png "查看Docker本机镜像列表")
 为了方便使用，在工程根目录下放置了一个docker-compose.yml文件，这一文件中已经预先配置好了由3个slave节点和1个master节点组成的Spark集群。
 
 在使用集群之前，需要先完成初始化
 
-<pre><code>
+```
 #[创建容器]
 docker-compose up -d
 #[格式化HDFS。第一次启动集群前，需要先格式化HDFS；以后每次启动集群时，都不需要再次格式化HDFS]
@@ -84,25 +84,25 @@ docker-compose exec spark-master hadoop fs -mkdir -p /user/spark/share/lib/
 docker-compose exec spark-master hadoop fs -put /code/spark-libs.jar /user/spark/share/lib/
 #[关闭HDFS]
 docker-compose exec spark-master stop-dfs.sh
-</code></pre>
+```
 
-###2.4 启动及停止集群
+### 2.4 启动及停止集群
 
 下面简要介绍启动和关闭Spark集群的步骤（以下步骤均在命令行环境下完成，在工程根目录下执行）
 - 启动集群进程，依次执行：
 
-<pre><code>
+```
 #[启动HDFS]
 docker-compose exec spark-master start-dfs.sh
 #[启动YARN]
 docker-compose exec spark-master start-yarn.sh
 #[启动Spark]
 docker-compose exec spark-master start-all.sh
-</code></pre>
+```
 
 - 停止Spark集群，依次执行：
 
-<pre><code>
+```
 #[停止Spark]
 docker-compose exec spark-master stop-all.sh
 #[停止YARN]
@@ -110,10 +110,11 @@ docker-compose exec spark-master stop-yarn.sh
 #[停止HDFS]
 docker-compose exec spark-master stop-dfs.sh
 #[停止容器]
-docker-compose down</code></pre>
+docker-compose down
+```
 
 
-###2.5 开发与测试过程中的集群使用方法
+### 2.5 开发与测试过程中的集群使用方法
 
 目前集群中采用的是1个master节点和3个slave节点的分配方案，可以通过调整docker-compose配置文件以及相应软件的配置文件来实现集群扩容，暂时无法做到自动化扩容。
 
@@ -121,14 +122,13 @@ docker-compose down</code></pre>
 
 如果要执行wordcount程序（在volume/code/tests/mapreduce-test目录下已经包含了）。在启动集群并启动各服务进程后。执行下列语句，可以进入master节点的命令行环境：
 
-<pre><code>docker-compose exec spark-master /bin/bash
-</code></pre>
+`docker-compose exec spark-master /bin/bash`
 
 然后可以进入/code目录提交任务，完成计算。如下图所示：
 ![命令行环境下提交任务](https://github.com/ruoyu-chen/hadoop-docker/raw/master/images/submitJob.png)
-##3.已知问题
+## 3.已知问题
 
 待完善
-##4.注意事项
+## 4.注意事项
 
 待完善
